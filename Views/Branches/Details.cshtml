@@ -1,0 +1,62 @@
+﻿@model VehicleRentalSystem.Models.Branch
+
+@{
+    ViewData["Title"] = "Branch Details";
+}
+
+<h1>Branch Details</h1>
+
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        Branch Information
+    </div>
+
+    <div class="card-body">
+        <p><strong>Branch Name:</strong> @Model.BranchName</p>
+        <p><strong>Location:</strong> @Model.Location</p>
+        <p><strong>Contact Number:</strong> @Model.ContactNumber</p>
+    </div>
+</div>
+
+<h3>Cars Available in this Branch</h3>
+
+@if (Model.Cars != null && Model.Cars.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Daily Price</th>
+                <th>Plate Number</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var car in Model.Cars)
+            {
+                <tr>
+                    <td>@car.Brand</td>
+                    <td>@car.Model</td>
+                    <td>@car.ManufactureYear</td>
+                    <td>@car.DailyPrice JD</td>
+                    <td>@car.PlateNumber</td>
+                    <td>@car.CarCategory?.CategoryName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No cars available in this branch.
+    </div>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BranchId" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to Branches</a>
+</div>

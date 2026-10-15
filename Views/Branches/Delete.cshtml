@@ -1,0 +1,30 @@
+﻿@model VehicleRentalSystem.Models.Branch
+
+@{
+    ViewData["Title"] = "Delete Branch";
+}
+
+<h1>Delete Branch</h1>
+
+<div class="alert alert-danger">
+    <h4>Are you sure you want to delete this branch?</h4>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-danger text-white">
+        Branch Information
+    </div>
+
+    <div class="card-body">
+        <p><strong>Branch Name:</strong> @Model.BranchName</p>
+        <p><strong>Location:</strong> @Model.Location</p>
+        <p><strong>Contact Number:</strong> @Model.ContactNumber</p>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="BranchId" />
+
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back to Branches</a>
+</form>

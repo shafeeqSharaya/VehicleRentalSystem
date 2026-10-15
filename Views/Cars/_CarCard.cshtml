@@ -1,0 +1,21 @@
+﻿@model VehicleRentalSystem.Models.Car
+
+<div class="card mb-3 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">
+            @Model.Brand @Model.Model
+        </h5>
+
+        <p class="card-text">
+            <strong>Year:</strong> @Model.ManufactureYear <br />
+            <strong>Daily Price:</strong> @Model.DailyPrice JD <br />
+            <strong>Plate Number:</strong> @Model.PlateNumber <br />
+            <strong>Branch:</strong> @Model.Branch?.BranchName <br />
+            <strong>Category:</strong> @Model.CarCategory?.CategoryName
+        </p>
+
+        <a asp-action="Details" asp-route-id="@Model.CarId" class="btn btn-info btn-sm">Details</a>
+        <a asp-action="Edit" asp-route-id="@Model.CarId" class="btn btn-warning btn-sm">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.CarId" class="btn btn-danger btn-sm">Delete</a>
+    </div>
+</div>
